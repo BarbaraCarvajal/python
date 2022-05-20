@@ -18,12 +18,17 @@ decimales.
 
 """
 
-alumnos=int(input("¿La información de cuántos alumnos ingresará?"))
+alumnos=int(input("¿La información de cuántos alumnos ingresará?\n"))
 
 for x in range(1,alumnos+1):
     nombre = input(f"Alumno {x}: ")
-    nota = float(input("Nota: "))
-    inasistencias = int(input("Numero de inasistencias: "))
+    nota = -1 #igual sirve poner 0
+    while nota <1.0 or nota >7.0:
+        nota = float(input("Nota: "))
+    inasistencias = -1
+    #bucle validacion de inasistencias
+    while inasistencias <0:
+        inasistencias = int(input("Numero de inasistencias: "))
 
     if inasistencias >10:
         print(f"La nota final de {nombre} es: {nota}, por haber tenido {inasistencias} inasistencias, no vuelvas a faltar!")
@@ -35,4 +40,7 @@ for x in range(1,alumnos+1):
         print(f"La nota final de {nombre} es: {bonificacion:.2f}, por haber tenido {inasistencias} sigue asi! pero no faltes :C!!")
     elif inasistencias >=0 and inasistencias <4:
         bonificacion = nota *1.10
+        if bonificacion >7.0:
+            bonificacion=7.0
         print(f"La nota final de {nombre} es: {bonificacion:.2f}, por haber tenido {inasistencias} sigue asi! Felicitaciones!!")
+# :.f es para que solo muestre hasta 2 decimales
